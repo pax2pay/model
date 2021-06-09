@@ -6,12 +6,15 @@ export interface Creatable {
 	currency: isoly.Currency
 	reference: { provider: Provider; id: string }
 }
+
 export namespace Creatable {
 	export function is(value: Creatable | any): value is Creatable {
 		return (
-			(typeof value == "object" && typeof value.reference == "string") ||
-			Provider.is(value.provider) ||
-			typeof value.name == "string" ||
+			typeof value == "object" &&
+			typeof value.reference == "object" &&
+			Provider.is(value.reference.provider) &&
+			typeof value.reference.id == "string" &&
+			typeof value.name == "string" &&
 			isoly.Currency.is(value.currency)
 		)
 	}
