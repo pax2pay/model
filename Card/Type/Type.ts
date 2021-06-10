@@ -1,8 +1,8 @@
-import { Provider } from "../../Provider"
 import * as isoly from "isoly"
+import { Provider } from "../../Provider"
 import { Flag as TypeFlag } from "./Flag"
-import { Scheme } from "./Scheme"
 import { Funding } from "./Funding"
+import { Scheme } from "./Scheme"
 
 export interface Type {
 	provider: Provider
