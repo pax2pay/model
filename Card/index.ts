@@ -7,9 +7,3 @@ export namespace Card {
 		//TODO
 	}
 }
-
-export namespace Card {
-	export function is(value: Card | any): value is Card {
-		//TODO
-	}
-}
