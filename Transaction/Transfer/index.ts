@@ -1,12 +1,13 @@
 import * as isoly from "isoly"
 import { Account } from "../../Account"
+import { Beneficiary } from "./Beneficiary"
 import { Creatable as TransferCreatable } from "./Creatable"
 import { Status as TransferStatus } from "./Status"
 
 export interface Transfer extends TransferCreatable {
 	id: string
 	sourceAccount: Account
-	//TODO Beneficiary
+	beneficiary: Beneficiary
 	destinationAccount: Account
 	scheduled: boolean
 	status: TransferStatus
