@@ -2,6 +2,7 @@ import * as isoly from "isoly"
 import { Account } from "../../Account"
 import { Beneficiary } from "./Beneficiary"
 import { Creatable as TransferCreatable } from "./Creatable"
+import { Destination as TransferDestination } from "./Destination"
 import { Status as TransferStatus } from "./Status"
 
 export interface Transfer extends TransferCreatable {
@@ -37,5 +38,9 @@ export namespace Transfer {
 	export type Status = TransferStatus
 	export namespace Status {
 		export const is = TransferStatus.is
+	}
+	export type Destination = TransferDestination
+	export namespace Destination {
+		export const is = TransferDestination.is
 	}
 }
