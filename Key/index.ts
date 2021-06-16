@@ -3,7 +3,7 @@ import * as authly from "authly"
 
 export interface Key {
 	expires: isoly.DateTime
-	token: string
+	backend: string
 }
 
 type Type = "live" | "test"
@@ -14,13 +14,17 @@ const keys: { [system in Type]: string } = {
 		"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAt5jV2gNDWcao0/5Sc3wMQW2GdxQJuLj3JXDmJK68WVVNHG8hZCsLIk6cp2oXCf2lArM8lcWsb/yB56A5AJW4gaWyzwglGOWzKpS0UXN5YtQ87J8H/VlS2PRE0i789Yu9nLdaF7is6jzSv+lJae/0HNayCqi9mAg167tpPZhBjjEMkb8imZNOoVdgKjPHtB2l93hbH1SDU/qX3d2aPd3EKB7OaMcNCnjXFV7t9AWojhPLyl1elfqfFB6EsqVtwEKvB0/JTj0jgmFwZMVYN1KeC3XQ1BBcjKI8DMe4bpEb+f6bLDlKwvxOomszXiX1LapGEOaiABXsTLs/lgK+ij3ZLwIDAQAB",
 }
 const transformers: (authly.Property.Transformer | undefined)[] = [
-	// new authly.Property.Renamer({ exp: "expires" }),
-	// new authly.Property.Converter({
-	// 	expires: {
-	// 		forward: (value: isoly.DateTime) => Math.floor(isoly.DateTime.parse(value).valueOf() / 1000),
-	// 		backward: (value: number) => isoly.DateTime.create(new Date(value * 1000)),
-	// 	},
-	// }),
+	new authly.Property.Converter({
+		expires: {
+			forward: (value: isoly.DateTime) => Math.floor(isoly.DateTime.parse(value).valueOf() / 1000),
+			backward: (value: number) => isoly.DateTime.create(new Date(value * 1000)),
+		},
+		issued: {
+			forward: (value: isoly.DateTime) => Math.floor(isoly.DateTime.parse(value).valueOf() / 1000),
+			backward: (value: number) => isoly.DateTime.create(new Date(value * 1000)),
+		},
+	}),
+	new authly.Property.Renamer({ issuer: "iss", issued: "iat", expires: "exp", backend: "bkd" }),
 ]
 
 export namespace Key {
