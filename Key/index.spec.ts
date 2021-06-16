@@ -1,4 +1,3 @@
-import * as authly from "authly"
 import * as dotenv from "dotenv"
 import * as model from "../index"
 
