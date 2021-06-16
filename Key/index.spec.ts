@@ -5,7 +5,7 @@ dotenv.config()
 
 describe("model.Key", () => {
 	it("sign Key", async () => {
-		const signingSecret = process.env.signingSecret
+		const signingSecret = process.env.SIGNING_SECRET
 		expect(signingSecret).toBeTruthy()
 
 		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
