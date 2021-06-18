@@ -3,6 +3,7 @@ import { Account } from "../Account"
 import { Creatable as CardCreatable } from "./Creatable"
 import { Status as CardStatus } from "./Status"
 import { System as CreationSystem } from "./System"
+import { Type as CardType } from "./Type"
 import { Usage as CardUsage } from "./Usage"
 
 export interface Card extends CardCreatable {
@@ -56,5 +57,9 @@ export namespace Card {
 	export type Usage = CardUsage
 	export namespace Usage {
 		export const is = CardUsage.is
+	}
+	export type Type = CardType
+	export namespace Type {
+		export const is = CardType.is
 	}
 }

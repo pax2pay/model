@@ -1,6 +1,6 @@
 import * as isoly from "isoly"
 import { Account } from "../../Account"
-import { Beneficiary } from "./Beneficiary"
+import { Beneficiary as TransferBeneficiary } from "./Beneficiary"
 import { Creatable as TransferCreatable } from "./Creatable"
 import { Destination as TransferDestination } from "./Destination"
 import { Status as TransferStatus } from "./Status"
@@ -8,7 +8,7 @@ import { Status as TransferStatus } from "./Status"
 export interface Transfer extends TransferCreatable {
 	id: string
 	sourceAccount: Account
-	beneficiary: Beneficiary
+	beneficiary: TransferBeneficiary
 	destinationAccount: Account
 	scheduled: boolean
 	status: TransferStatus
@@ -34,7 +34,6 @@ export namespace Transfer {
 	export namespace Creatable {
 		export const is = TransferCreatable.is
 	}
-
 	export type Status = TransferStatus
 	export namespace Status {
 		export const is = TransferStatus.is
@@ -42,5 +41,9 @@ export namespace Transfer {
 	export type Destination = TransferDestination
 	export namespace Destination {
 		export const is = TransferDestination.is
+	}
+	export type Beneficiary = TransferBeneficiary
+	export namespace Beneficiary {
+		export const is = TransferBeneficiary.is
 	}
 }
