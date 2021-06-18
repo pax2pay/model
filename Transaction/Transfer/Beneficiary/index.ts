@@ -1,5 +1,7 @@
 import * as isoly from "isoly"
 import { Creatable as BeneficiaryCreatable } from "./Creatable"
+import { Destination as BeneficiaryDestination } from "./Destination"
+import { Status as BeneficiaryStatus } from "./Status"
 
 export interface Beneficiary extends BeneficiaryCreatable {
 	id: number
@@ -21,5 +23,13 @@ export namespace Beneficiary {
 	export type Creatable = BeneficiaryCreatable
 	export namespace Creatable {
 		export const is = BeneficiaryCreatable.is
+	}
+	export type Destination = BeneficiaryDestination
+	export namespace Destination {
+		export const is = BeneficiaryDestination.is
+	}
+	export type Status = BeneficiaryStatus
+	export namespace Status {
+		export const is = BeneficiaryStatus.is
 	}
 }
