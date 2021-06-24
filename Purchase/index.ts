@@ -1,5 +1,5 @@
-import { Transfer as PurchaseTransfer } from "../Transaction/Transfer"
 import { Card as PurchaseCard } from "./Card"
+import { Transfer as PurchaseTransfer } from "./Transfer"
 import { Type as PurchaseType } from "./Type"
 
 export type Purchase = PurchaseCard | PurchaseTransfer
