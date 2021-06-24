@@ -1,5 +1,5 @@
 import * as isoly from "isoly"
-import { Type as TransactionType } from "../Transaction/Type"
+import { Type as TransactionType } from "../Purchase/Type"
 import { ItemStatus } from "./ItemStatus"
 
 export interface Event {
