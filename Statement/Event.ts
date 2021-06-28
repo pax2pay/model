@@ -19,7 +19,7 @@ export interface Event {
 	transactionAmount: number
 	exchangeRate: number
 	trackingId?: string
-	departureDate?: Date
+	departureDate?: isoly.Date
 	supplierCode?: string
 	supplierBookingRef?: string
 	leadPassengerName?: string
