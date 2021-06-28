@@ -1,13 +1,13 @@
 import * as isoly from "isoly"
-import { Type as TransactionType } from "../Purchase/Type"
-import { ItemStatus } from "./ItemStatus"
+import { EventStatus } from "./EventStatus"
+import { EventType } from "./EventType"
 
 export interface Event {
 	transactionDate: isoly.Date
 	organisation: string
 	cardId?: string
-	transactionType: TransactionType
-	status: ItemStatus
+	transactionType: EventType
+	status: EventStatus
 	sourceAccount: string
 	sourceAccountIban?: string
 	cardNumber?: string
@@ -42,8 +42,8 @@ export namespace Event {
 			isoly.Date.is(value.transactionDate) &&
 			typeof value.organisation == "string" &&
 			(value.cardId == undefined || typeof value.cardId == "string") &&
-			TransactionType.is(value.transactionType) &&
-			ItemStatus.is(value.status) &&
+			EventType.is(value.transactionType) &&
+			EventStatus.is(value.status) &&
 			typeof value.sourceAccount == "string" &&
 			(value.sourceAccountIban == undefined || typeof value.sourceAccountIban == "string") &&
 			(value.cardNumber == undefined || typeof value.cardNumber == "string") &&
