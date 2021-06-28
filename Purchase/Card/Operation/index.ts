@@ -32,8 +32,8 @@ export namespace Operation {
 	export function balanceImpact(value: Operation): { reserved: number; balance: number } | undefined {
 		let result: { reserved: number; balance: number }
 
-		// value.status can be "failed", "pending" or "success"
-		if (value.status == "failed" || value.status == "pending")
+		// value.status can be "failed", "declined", "unknown" or "succeeded"
+		if (value.status == "failed" || value.status == "declined" || value.status == "unknown")
 			result = { reserved: 0, balance: 0 }
 		else {
 			switch (value.type) {
