@@ -1,15 +1,14 @@
 import { Organization } from "../../Organization"
 import { Base } from "../Base"
 import { Type as PurchaseType } from "../Type"
+import { getAmount as getAmountFunction } from "./getAmount"
+import { getStatus as getStatusFunction } from "./getStatus"
 import { Operation as CardOperation } from "./Operation"
 import { Status as CardStatus } from "./Status"
 
 export interface Card extends Base {
-	//id: string
 	type: PurchaseType
-	//reference: { provider: Provider; id: string }
 	organization: Organization
-	//amount: number
 	meta: Record<string, any> //Create more specific type
 	operations: CardOperation[]
 	status: CardStatus
@@ -40,4 +39,7 @@ export namespace Card {
 	export namespace Status {
 		export const is = CardStatus.is
 	}
+
+	export const getStatus = getStatusFunction
+	export const getAmount = getAmountFunction
 }

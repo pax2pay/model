@@ -25,6 +25,9 @@ export namespace Purchase {
 			export type Settle = PurchaseCard.Operation.Settle
 
 			export const balanceImpact = PurchaseCard.Operation.balanceImpact
+
+			export const getStatus = PurchaseCard.getStatus
+			export const getAmount = PurchaseCard.getAmount
 		}
 		export type Status = PurchaseCard.Status
 		export namespace Status {
