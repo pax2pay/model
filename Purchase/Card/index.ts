@@ -1,17 +1,17 @@
-import * as isoly from "isoly"
 import { Organization } from "../../Organization"
-import { Provider } from "../../Provider"
 import { Base } from "../Base"
+import { Type as PurchaseType } from "../Type"
 import { Operation as CardOperation } from "./Operation"
+import { Status as PurchaseCardStatus } from "./Status"
 
 export interface Card extends Base {
-	id: string
-	type: string
-	reference: { provider: Provider; id: string }
+	//id: string
+	type: PurchaseType
+	//reference: { provider: Provider; id: string }
 	organization: Organization
-	amount: number
-	currency: isoly.Currency
+	//amount: number
 	meta: Record<string, any> //Create more specific type
+	operations: CardOperation[]
 }
 
 export namespace Card {
@@ -32,5 +32,10 @@ export namespace Card {
 		export type Type = CardOperation.Type
 
 		export const balanceImpact = CardOperation.balanceImpact
+	}
+
+	export type Status = PurchaseCardStatus
+	export namespace Status {
+		export const is = PurchaseCardStatus.is
 	}
 }

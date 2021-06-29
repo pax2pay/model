@@ -25,6 +25,10 @@ export namespace Purchase {
 
 			export const balanceImpact = PurchaseCard.Operation.balanceImpact
 		}
+		export type Status = PurchaseCard.Status
+		export namespace Status {
+			export const is = PurchaseCard.Status.is
+		}
 	}
 
 	export type Transfer = PurchaseTransfer

@@ -1,10 +1,10 @@
-import * as isoly from "isoly"
 import { Base } from "../Base"
+import { Type } from "../Type"
+import { Operation as TransferOperation } from "./Operation"
 
 export interface Transfer extends Base {
 	id: string
-	type: "transfer"
-	amount: number
-	currency: isoly.Currency
+	type: Type
 	meta: Record<string, any>
+	operations: TransferOperation[]
 }
