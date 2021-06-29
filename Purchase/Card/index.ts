@@ -2,7 +2,7 @@ import { Organization } from "../../Organization"
 import { Base } from "../Base"
 import { Type as PurchaseType } from "../Type"
 import { Operation as CardOperation } from "./Operation"
-import { Status as PurchaseCardStatus } from "./Status"
+import { Status as CardStatus } from "./Status"
 
 export interface Card extends Base {
 	//id: string
@@ -12,6 +12,7 @@ export interface Card extends Base {
 	//amount: number
 	meta: Record<string, any> //Create more specific type
 	operations: CardOperation[]
+	status: CardStatus
 }
 
 export namespace Card {
@@ -34,8 +35,8 @@ export namespace Card {
 		export const balanceImpact = CardOperation.balanceImpact
 	}
 
-	export type Status = PurchaseCardStatus
+	export type Status = CardStatus
 	export namespace Status {
-		export const is = PurchaseCardStatus.is
+		export const is = CardStatus.is
 	}
 }

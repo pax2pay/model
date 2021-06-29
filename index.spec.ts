@@ -9,6 +9,7 @@ describe("@pax2pay/model", () => {
 			organization: { name: "testname", code: "testcode", status: "active" },
 			currency: "EUR",
 			meta: { testkey: "testvalue" },
+			status: { authorized: 100, captured: 50, settled: 50 },
 			operations: [],
 		}
 		expect(card).toEqual({
@@ -18,6 +19,7 @@ describe("@pax2pay/model", () => {
 			organization: { name: "testname", code: "testcode", status: "active" },
 			currency: "EUR",
 			meta: { testkey: "testvalue" },
+			status: { authorized: 100, captured: 50, settled: 50 },
 			operations: [],
 		})
 	})
