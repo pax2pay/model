@@ -31,6 +31,7 @@ export namespace Card {
 		export type Base = CardOperation.Base
 		export type Status = CardOperation.Status
 		export type Type = CardOperation.Type
+		export type Settle = CardOperation.Settle
 
 		export const balanceImpact = CardOperation.balanceImpact
 	}
