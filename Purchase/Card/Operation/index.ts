@@ -38,16 +38,16 @@ export namespace Operation {
 		else {
 			switch (value.type) {
 				case "authorize":
-					result = { reserved: value.amount, balance: 0 }
+					result = { reserved: (value as OperationAuthorize).amount, balance: 0 }
 					break
 				case "capture":
-					result = { reserved: -value.amount, balance: -value.amount }
+					result = { reserved: -(value as OperationCapture).amount, balance: -(value as OperationCapture).amount }
 					break
 				case "refund":
-					result = { reserved: 0, balance: value.amount }
+					result = { reserved: 0, balance: (value as OperationRefund).amount }
 					break
 				case "release":
-					result = { reserved: -value.amount, balance: 0 }
+					result = { reserved: -(value as OperationRelease).amount, balance: 0 }
 					break
 				default:
 					result = { reserved: 0, balance: 0 }
