@@ -22,6 +22,7 @@ export namespace Purchase {
 			export type Base = PurchaseCard.Operation.Base
 			export type Status = PurchaseCard.Operation.Status
 			export type Type = PurchaseCard.Operation.Type
+			export type Settle = PurchaseCard.Operation.Settle
 
 			export const balanceImpact = PurchaseCard.Operation.balanceImpact
 		}

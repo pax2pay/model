@@ -8,6 +8,7 @@ import { Freeze as OperationFreeze } from "./Freeze"
 import { Limit as OperationLimit } from "./Limit"
 import { Refund as OperationRefund } from "./Refund"
 import { Release as OperationRelease } from "./Release"
+import { Settle as OperationSettle } from "./Settle"
 import { Status as OperationStatus } from "./Status"
 import { Thaw as OperationThaw } from "./Thaw"
 import { Type as OperationType } from "./Type"
@@ -28,6 +29,7 @@ export namespace Operation {
 	export type Base = OperationBase
 	export type Status = OperationStatus
 	export type Type = OperationType
+	export type Settle = OperationSettle
 
 	export function balanceImpact(value: Operation): { reserved: number; balance: number } | undefined {
 		let result: { reserved: number; balance: number }
