@@ -1,3 +1,3 @@
 export interface Approved {
-	approvedBy: string
+	approvedBy?: string
 }
