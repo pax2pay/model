@@ -5,7 +5,6 @@ describe("@pax2pay/model", () => {
 		const card: model.Purchase.Card = {
 			id: "test1234",
 			type: "card",
-			reference: { provider: "modulr", id: "1234qwer" },
 			organization: { name: "testname", code: "testcode", status: "active" },
 			currency: "EUR",
 			meta: { testkey: "testvalue" },
@@ -15,7 +14,6 @@ describe("@pax2pay/model", () => {
 		expect(card).toEqual({
 			id: "test1234",
 			type: "card",
-			reference: { provider: "modulr", id: "1234qwer" },
 			organization: { name: "testname", code: "testcode", status: "active" },
 			currency: "EUR",
 			meta: { testkey: "testvalue" },

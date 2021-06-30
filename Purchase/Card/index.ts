@@ -9,7 +9,6 @@ import { Status as CardStatus } from "./Status"
 export interface Card extends Base {
 	type: PurchaseType
 	organization: Organization
-	meta: Record<string, any> //Create more specific type
 	operations: CardOperation[]
 	status: CardStatus
 }
