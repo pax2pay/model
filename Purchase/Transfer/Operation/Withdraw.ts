@@ -1,6 +1,7 @@
 import { Base } from "./Base"
+import { Type as OperationType } from "./Type"
 
 export interface Withdraw extends Base {
 	amount: number
-	from: string //redundant?
+	type: OperationType
 }

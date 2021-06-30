@@ -1,1 +1,1 @@
-export type Type = "approve" | "settle" | "create"
+export type Type = "deposit" | "withdraw"
