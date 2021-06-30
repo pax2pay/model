@@ -38,13 +38,11 @@ export namespace Purchase {
 	export type Transfer = PurchaseTransfer
 
 	export namespace Transfer {
-		export type Type = PurchaseTransfer.Type
 		export type Operation = PurchaseTransfer.Operation
 		export namespace Operation {
 			export type Base = PurchaseTransfer.Operation.Base
-			export type Create = PurchaseTransfer.Operation.Create
-			export type Settle = PurchaseTransfer.Operation.Settle
-			export type Approved = PurchaseTransfer.Operation.Approved
+			export type Deposit = PurchaseTransfer.Operation.Deposit
+			export type Withdraw = PurchaseTransfer.Operation.Withdraw
 			export type Type = PurchaseTransfer.Operation.Type
 			export type Status = PurchaseTransfer.Operation.Status
 		}
