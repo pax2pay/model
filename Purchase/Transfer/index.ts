@@ -4,8 +4,8 @@ import { Operation as TransferOperation } from "./Operation"
 
 export interface Transfer extends Base {
 	type: Type
-	meta: Record<string, any>
 	operations: TransferOperation[]
+	amount: number
 }
 
 export namespace Transfer {
