@@ -1,18 +1,14 @@
-import * as isoly from "isoly"
 import { Approved as OperationApproved } from "./Approved"
+import { Base as OperationBase } from "./Base"
 import { Create as OperationCreate } from "./Create"
 import { Settle as OperationSettle } from "./Settle"
 import { Status as OperationStatus } from "./Status"
 import { Type as OperationType } from "./Type"
 
-export interface Operation {
-	time: isoly.Date
-	destination?: string
-	type: OperationType
-	status: OperationStatus
-}
+export type Operation = OperationBase
 
 export namespace Operation {
+	export type Base = OperationBase
 	export type Create = OperationCreate
 	export type Settle = OperationSettle
 	export type Approved = OperationApproved
