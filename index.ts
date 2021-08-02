@@ -5,9 +5,9 @@ import { Credentials } from "./Credentials"
 import { Key } from "./Key"
 import { Me } from "./Me"
 import { Organization } from "./Organization"
+import { Payment } from "./Payment"
 import { Provider } from "./Provider"
-import { Purchase } from "./Purchase"
 import { Statement } from "./Statement"
 import { User } from "./User"
 
-export { Account, Address, Card, Credentials, Key, Me, Organization, Provider, Statement, Purchase, User }
+export { Account, Address, Card, Credentials, Key, Me, Organization, Provider, Statement, Payment, User }

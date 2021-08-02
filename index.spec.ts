@@ -1,8 +1,8 @@
 import * as model from "./index"
 
 describe("@pax2pay/model", () => {
-	it("model.Purchase.Card", () => {
-		const card: model.Purchase.Card = {
+	it("model.Payment.Card", () => {
+		const card: model.Payment.Card = {
 			id: "test1234",
 			type: "card",
 			organization: { name: "testname", code: "testcode", status: "active" },
