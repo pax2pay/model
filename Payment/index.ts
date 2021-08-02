@@ -1,55 +1,55 @@
-import { Card as PurchaseCard } from "./Card"
-import { Transfer as PurchaseTransfer } from "./Transfer"
-import { Type as PurchaseType } from "./Type"
+import { Card as PaymentCard } from "./Card"
+import { Transfer as PaymentTransfer } from "./Transfer"
+import { Type as PaymentType } from "./Type"
 
-export type Purchase = PurchaseCard | PurchaseTransfer
+export type Payment = PaymentCard | PaymentTransfer
 
-export namespace Purchase {
-	export type Card = PurchaseCard
+export namespace Payment {
+	export type Card = PaymentCard
 	export namespace Card {
-		export type Operation = PurchaseCard.Operation
+		export type Operation = PaymentCard.Operation
 		export namespace Operation {
-			export type Authorize = PurchaseCard.Operation.Authorize
-			export type Capture = PurchaseCard.Operation.Capture
-			export type Create = PurchaseCard.Operation.Create
-			export type Expire = PurchaseCard.Operation.Expire
-			export type Freeze = PurchaseCard.Operation.Freeze
-			export type Limit = PurchaseCard.Operation.Limit
-			export type Refund = PurchaseCard.Operation.Refund
-			export type Release = PurchaseCard.Operation.Release
-			export type Thaw = PurchaseCard.Operation.Thaw
-			export type Approved = PurchaseCard.Operation.Approved
-			export type Base = PurchaseCard.Operation.Base
-			export type Status = PurchaseCard.Operation.Status
-			export type Type = PurchaseCard.Operation.Type
-			export type Settle = PurchaseCard.Operation.Settle
+			export type Authorize = PaymentCard.Operation.Authorize
+			export type Capture = PaymentCard.Operation.Capture
+			export type Create = PaymentCard.Operation.Create
+			export type Expire = PaymentCard.Operation.Expire
+			export type Freeze = PaymentCard.Operation.Freeze
+			export type Limit = PaymentCard.Operation.Limit
+			export type Refund = PaymentCard.Operation.Refund
+			export type Release = PaymentCard.Operation.Release
+			export type Thaw = PaymentCard.Operation.Thaw
+			export type Approved = PaymentCard.Operation.Approved
+			export type Base = PaymentCard.Operation.Base
+			export type Status = PaymentCard.Operation.Status
+			export type Type = PaymentCard.Operation.Type
+			export type Settle = PaymentCard.Operation.Settle
 
-			export const balanceImpact = PurchaseCard.Operation.balanceImpact
+			export const balanceImpact = PaymentCard.Operation.balanceImpact
 		}
-		export type Status = PurchaseCard.Status
+		export type Status = PaymentCard.Status
 		export namespace Status {
-			export const is = PurchaseCard.Status.is
+			export const is = PaymentCard.Status.is
 		}
 
-		export const getStatus = PurchaseCard.getStatus
-		export const getAmount = PurchaseCard.getAmount
+		export const getStatus = PaymentCard.getStatus
+		export const getAmount = PaymentCard.getAmount
 	}
 
-	export type Transfer = PurchaseTransfer
+	export type Transfer = PaymentTransfer
 
 	export namespace Transfer {
-		export type Operation = PurchaseTransfer.Operation
+		export type Operation = PaymentTransfer.Operation
 		export namespace Operation {
-			export type Base = PurchaseTransfer.Operation.Base
-			export type Deposit = PurchaseTransfer.Operation.Deposit
-			export type Withdraw = PurchaseTransfer.Operation.Withdraw
-			export type Type = PurchaseTransfer.Operation.Type
-			export type Status = PurchaseTransfer.Operation.Status
+			export type Base = PaymentTransfer.Operation.Base
+			export type Deposit = PaymentTransfer.Operation.Deposit
+			export type Withdraw = PaymentTransfer.Operation.Withdraw
+			export type Type = PaymentTransfer.Operation.Type
+			export type Status = PaymentTransfer.Operation.Status
 		}
 	}
 
-	export type Type = PurchaseType
+	export type Type = PaymentType
 	export namespace Type {
-		export const is = PurchaseType.is
+		export const is = PaymentType.is
 	}
 }

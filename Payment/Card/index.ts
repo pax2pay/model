@@ -1,13 +1,13 @@
 import { Organization } from "../../Organization"
 import { Base } from "../Base"
-import { Type as PurchaseType } from "../Type"
+import { Type as PaymentType } from "../Type"
 import { getAmount as getAmountFunction } from "./getAmount"
 import { getStatus as getStatusFunction } from "./getStatus"
 import { Operation as CardOperation } from "./Operation"
 import { Status as CardStatus } from "./Status"
 
 export interface Card extends Base {
-	type: PurchaseType
+	type: PaymentType
 	organization: Organization
 	operations: CardOperation[]
 	status: CardStatus
