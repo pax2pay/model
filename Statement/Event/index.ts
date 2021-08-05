@@ -1,10 +1,10 @@
 import * as isoly from "isoly"
-import { EventStatus } from "./EventStatus"
-import { EventType } from "./EventType"
+import { Status as EventStatus } from "./Status"
+import { Type as EventType } from "./Type"
 
 export interface Event {
 	transactionDate: isoly.Date
-	organisation: string
+	organization: string
 	cardId?: string
 	transactionType: EventType
 	status: EventStatus
@@ -40,7 +40,7 @@ export namespace Event {
 		return (
 			typeof value == "object" &&
 			isoly.Date.is(value.transactionDate) &&
-			typeof value.organisation == "string" &&
+			typeof value.organization == "string" &&
 			(value.cardId == undefined || typeof value.cardId == "string") &&
 			EventType.is(value.transactionType) &&
 			EventStatus.is(value.status) &&
@@ -70,5 +70,13 @@ export namespace Event {
 			(value.sourceAccountAccountNumber == undefined || typeof value.sourceAccountAccountNumber == "string") &&
 			(value.reason == undefined || typeof value.reason == "string")
 		)
+	}
+	export type Status = EventStatus
+	export namespace Status {
+		export const is = EventStatus.is
+	}
+	export type Type = EventType
+	export namespace Type {
+		export const is = EventType.is
 	}
 }

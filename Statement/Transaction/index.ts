@@ -1,10 +1,10 @@
 import * as isoly from "isoly"
-import { ItemStatus } from "./ItemStatus"
-import { ItemType } from "./ItemType"
+import { Status as TransactionStatus } from "./Status"
+import { Type as TransactionType } from "./Type"
 
-export interface Item {
-	transactionType: ItemType
-	transactionStatus: ItemStatus
+export interface Transaction {
+	type: TransactionType
+	status: TransactionStatus
 	timestamp: isoly.Date
 	currency: isoly.Currency
 	amount: number
@@ -17,12 +17,12 @@ export interface Item {
 	settlementTimestamp?: isoly.Date
 }
 
-export namespace Item {
-	export function is(value: Item | any): value is Item {
+export namespace Transaction {
+	export function is(value: Transaction | any): value is Transaction {
 		return (
 			typeof value == "object" &&
-			ItemType.is(value.transactionType) &&
-			ItemStatus.is(value.transactionStatus) &&
+			TransactionType.is(value.type) &&
+			TransactionStatus.is(value.status) &&
 			isoly.Date.is(value.timestamp) &&
 			isoly.Currency.is(value.currency) &&
 			typeof value.amount == "number" &&
@@ -35,5 +35,13 @@ export namespace Item {
 			typeof value.pending == "boolean" &&
 			(value.settlementTimestamp == undefined || isoly.Date.is(value.settlementTimestamp))
 		)
+	}
+	export type Type = TransactionType
+	export namespace Type {
+		export const is = TransactionType.is
+	}
+	export type Status = TransactionStatus
+	export namespace Status {
+		export const is = TransactionStatus.is
 	}
 }
