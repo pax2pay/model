@@ -6,9 +6,8 @@ export interface Statement {
 	account: string
 	start: isoly.Date
 	end: isoly.Date
-	openingBalance: number
-	closingBalance: number
-	items: (StatementTransaction | StatementEvent)[][]
+	balance: { open: number; close: number }
+	transactions: (StatementTransaction | StatementEvent)[][]
 }
 
 export namespace Statement {
@@ -18,10 +17,11 @@ export namespace Statement {
 			typeof value.account == "string" &&
 			isoly.Date.is(value.from) &&
 			isoly.Date.is(value.end) &&
-			typeof value.openingBalance == "number" &&
-			typeof value.closingBalance == "number" &&
-			Array.isArray(value.items) &&
-			value.items.every(
+			typeof value.balance == "object" &&
+			typeof value.balance.open == "number" &&
+			typeof value.balance.close == "number" &&
+			Array.isArray(value.transactions) &&
+			value.transactions.every(
 				(i: StatementTransaction | StatementEvent | any) => StatementTransaction.is(i) || StatementEvent.is(i)
 			)
 		)
