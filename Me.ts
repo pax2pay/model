@@ -5,7 +5,7 @@ export interface Me extends User {
 }
 
 export namespace Me {
-	export function is(value: Me | any) {
-		typeof value == "object" && typeof value.key == "string" && User.is(value)
+	export function is(value: Me | any): value is Me {
+		return typeof value == "object" && typeof value.key == "string" && User.is(value)
 	}
 }
