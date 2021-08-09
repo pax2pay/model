@@ -28,7 +28,7 @@
 			"^.+\\.(j|t)sx?$": "ts-jest"
 		},
 		"transformIgnorePatterns": [
-			"<rootDir>/node_modules/(?!(cryptly|authly|isoly|gracely|@pax2pay)/.*)"
+			"<rootDir>/node_modules/(?!(cryptly|authly|isoly|gracely|@pax2pay|cloud-http)/.*)"
 		],
 		"testEnvironment": "node",
 		"testRegex": "((\\.|/)(test|spec))(\\.|\\/.+)(jsx?|tsx?)$",
@@ -56,6 +56,7 @@
 	},
 	"devDependencies": {
 		"@babel/core": "^7.14.6",
+		"@types/isomorphic-fetch": "^0.0.35",
 		"@types/jest": "^26.0.23",
 		"@types/node": "^15.12.2",
 		"@typescript-eslint/eslint-plugin": "4.27.0",
@@ -66,6 +67,7 @@
 		"eslint": "7.28.0",
 		"eslint-plugin-prettierx": "github:nilssonemma/eslint-plugin-prettierx#master",
 		"eslint-plugin-simple-import-sort": "^7.0.0",
+		"isomorphic-fetch": "^3.0.0",
 		"jest": "^27.0.4",
 		"prettierx": "github:simonmika/prettierx#newline-before-clause",
 		"ts-jest": "^27.0.3",
@@ -74,6 +76,8 @@
 	},
 	"dependencies": {
 		"authly": "^0.2.7",
+		"cloud-http": "^0.0.24",
+		"gracely": "^0.0.43",
 		"isoly": "^0.1.11"
 	}
 }
