@@ -10,7 +10,30 @@ describe("Client", () => {
 		if (client) {
 			client.onUnauthorized = async () => {
 				const me = await client.me.login(process.env.user ?? "", process.env.password ?? "")
-				expect(me).toMatchObject({})
+				expect(me).toMatchObject({
+					user: process.env.user,
+					name: {
+						first: expect.stringMatching(/.*/),
+						last: expect.stringMatching(/.*/),
+					},
+					email: expect.stringMatching(
+						/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i
+					),
+					key: expect.stringMatching(/^[A-Za-z0-9-_=]+\.[A-Za-z0-9-_=]+\.?[A-Za-z0-9-_.+/=]*$/),
+					organization: {
+						code: "mcom",
+						name: "mcom org",
+						status: "active",
+					},
+					status: "active",
+					password: {
+						changed: /^(\d{4}-[01]\d-[0-3]\d)|(\d{4}-[01]\d-[0-3]\d)|(\d{4}-[01]\d-[0-3]\d)$/,
+					},
+					limits: [],
+					"2fa": {
+						enabled: false,
+					},
+				})
 				return !gracely.Error.is(me)
 			}
 			const statement = await client.account.statement.get(process.env.account ?? "", "2010-01-01", "2011-01-01")

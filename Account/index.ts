@@ -1,9 +1,10 @@
+import * as cryptly from "cryptly"
 import { Organization } from "../Organization"
 import { Creatable as AccountCreatable } from "./Creatable"
 import { Status as AccountStatus } from "./Status"
 
 export interface Account extends AccountCreatable {
-	id: number
+	id: cryptly.Identifier
 	organization: Organization
 	status: AccountStatus
 	balance: number
