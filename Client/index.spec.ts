@@ -1,8 +1,8 @@
 import * as gracely from "gracely"
+import "isomorphic-fetch"
 import { config } from "dotenv"
 import { Client } from "./index"
 config()
-
 describe("Client", () => {
 	it("auto login", async () => {
 		const client = Client.create(process.env.server)

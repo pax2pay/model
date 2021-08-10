@@ -1,8 +1,6 @@
 import "isomorphic-fetch"
 import * as model from "./index"
 
-globalThis.Request = Request
-
 describe("@pax2pay/model", () => {
 	it("model.Payment.Card", () => {
 		const card: model.Payment.Card = {
