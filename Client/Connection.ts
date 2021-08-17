@@ -4,16 +4,7 @@ import * as http from "cloud-http"
 export class Connection {
 	onError?: (error: gracely.Error, request: http.Request) => Promise<boolean>
 	onUnauthorized?: (connection: Connection) => Promise<boolean>
-	#key?: string
-	get key() {
-		return this.#key
-	}
-	set key(value: string | undefined) {
-		this.#key = value
-	}
-	private constructor(readonly server: string | undefined, key: string | undefined) {
-		this.#key = key
-	}
+	private constructor(public server: string | undefined, public key: string | undefined) {}
 
 	private async fetch<Response>(
 		path: string,
@@ -23,7 +14,7 @@ export class Connection {
 	): Promise<Response | gracely.Error> {
 		header = {
 			contentType: "application/json; charset=utf-8",
-			authorization: this.#key ? "Bearer " + this.#key : undefined,
+			authorization: this.key ? "Bearer " + this.key : undefined,
 			...header,
 		}
 
