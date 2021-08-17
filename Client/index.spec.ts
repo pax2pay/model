@@ -40,4 +40,16 @@ describe("Client", () => {
 			expect(statement).toMatchObject({})
 		}
 	})
+	it("no server", async () => {
+		const client = Client.create(process.env.server)
+		expect(client).not.toBeUndefined()
+		if (client) {
+			const error = await client.account.statement.get(process.env.account ?? "", "2010-01-01", "2011-01-01")
+			expect(error).toEqual({
+				type: "not found",
+				error: "No server configured.",
+				status: 404,
+			})
+		}
+	})
 })

@@ -11,7 +11,7 @@ export class Connection {
 	set key(value: string | undefined) {
 		this.#key = value
 	}
-	private constructor(readonly server: string, key?: string) {
+	private constructor(readonly server: string | undefined, key: string | undefined) {
 		this.#key = key
 	}
 
@@ -26,15 +26,21 @@ export class Connection {
 			authorization: this.#key ? "Bearer " + this.#key : undefined,
 			...header,
 		}
-		const request = { url: this.server + "/" + path, method, header, body }
-		const response = await http.fetch(request).catch(error => console.log(error))
-		let result = !response
-			? gracely.server.unavailable("Failed to reach server.")
-			: response.status == 401 && this.onUnauthorized && (await this.onUnauthorized(this))
-			? await this.fetch<Response>(path, method, body)
-			: ((await response.body) as Response | gracely.Error)
-		if (gracely.Error.is(result) && this.onError && (await this.onError(result, http.Request.create(request))))
-			result = await this.fetch(path, method, body, header)
+
+		let result: Response | gracely.Error
+		if (this.server)
+			result = gracely.client.notFound("No server configured.")
+		else {
+			const request = { url: this.server + "/" + path, method, header, body }
+			const response = await http.fetch(request).catch(error => console.log(error))
+			result = !response
+				? gracely.server.unavailable("Failed to reach server.")
+				: response.status == 401 && this.onUnauthorized && (await this.onUnauthorized(this))
+				? await this.fetch<Response>(path, method, body)
+				: ((await response.body) as Response | gracely.Error)
+			if (gracely.Error.is(result) && this.onError && (await this.onError(result, http.Request.create(request))))
+				result = await this.fetch(path, method, body, header)
+		}
 		return result
 	}
 	async get<Response>(path: string, header?: http.Request.Header): Promise<Response | gracely.Error> {
@@ -52,8 +58,8 @@ export class Connection {
 	async delete<Response>(path: string, header?: http.Request.Header): Promise<Response | gracely.Error> {
 		return await this.fetch<Response>(path, "DELETE", undefined, header)
 	}
-	static create(server: string | undefined, key?: string) {
-		return server != undefined ? new Connection(server, key) : undefined
+	static create(server?: string, key?: string) {
+		return new Connection(server, key)
 	}
 	static async errorToUndefined<T>(body: Promise<T | gracely.Error>): Promise<T | undefined> {
 		const b = await body

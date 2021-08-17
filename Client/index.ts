@@ -9,8 +9,7 @@ export class Client {
 	private constructor(private readonly connection: Connection) {
 		this.connection.onUnauthorized = async () => this.onUnauthorized != undefined && (await this.onUnauthorized(this))
 	}
-	static create(server: string | undefined, key?: string): Client | undefined {
-		const connection = Connection.create(server, key)
-		return connection && new Client(connection)
+	static create(server?: string, key?: string): Client {
+		return new Client(Connection.create(server, key))
 	}
 }
