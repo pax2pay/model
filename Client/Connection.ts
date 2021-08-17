@@ -19,7 +19,7 @@ export class Connection {
 		}
 
 		let result: Response | gracely.Error
-		if (this.server)
+		if (!this.server)
 			result = gracely.client.notFound("No server configured.")
 		else {
 			const request = { url: this.server + "/" + path, method, header, body }

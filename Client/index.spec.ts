@@ -41,7 +41,7 @@ describe("Client", () => {
 		}
 	})
 	it("no server", async () => {
-		const client = Client.create(process.env.server)
+		const client = Client.create()
 		expect(client).not.toBeUndefined()
 		if (client) {
 			const error = await client.account.statement.get(process.env.account ?? "", "2010-01-01", "2011-01-01")
