@@ -36,15 +36,15 @@ describe("Client", () => {
 				})
 				return !gracely.Error.is(me)
 			}
-			const statement = await client.account.statement.get(process.env.account ?? "", "2010-01-01", "2011-01-01")
-			expect(statement).toMatchObject({})
+			const transactions = await client.account.transaction.list(process.env.account ?? "", "2010-01-01", "2011-01-01")
+			expect(transactions).toMatchObject([])
 		}
 	})
 	it("no server", async () => {
 		const client = Client.create()
 		expect(client).not.toBeUndefined()
 		if (client) {
-			const error = await client.account.statement.get(process.env.account ?? "", "2010-01-01", "2011-01-01")
+			const error = await client.account.transaction.list(process.env.account ?? "", "2010-01-01", "2011-01-01")
 			expect(error).toEqual({
 				type: "not found",
 				error: "No server configured.",

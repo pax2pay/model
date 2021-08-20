@@ -1,8 +1,8 @@
 import * as cryptly from "cryptly"
+import { Transaction as AccountTransaction } from "../Client/Transaction"
 import { Organization } from "../Organization"
 import { Creatable as AccountCreatable } from "./Creatable"
 import { Status as AccountStatus } from "./Status"
-import { Transaction as AccountTransaction } from "./Transaction"
 
 export interface Account extends AccountCreatable {
 	id: cryptly.Identifier
