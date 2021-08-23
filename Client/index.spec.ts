@@ -44,7 +44,7 @@ describe("Client", () => {
 		const client = Client.create()
 		expect(client).not.toBeUndefined()
 		if (client) {
-			const error = await client.account.transaction.list(process.env.account ?? "", "2010-01-01", "2011-01-01")
+			const error = await client.account.transaction.list(process.env.account ?? "", "2020-01-01", "2021-01-01")
 			expect(error).toEqual({
 				type: "not found",
 				error: "No server configured.",
