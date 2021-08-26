@@ -2,6 +2,7 @@ import * as cryptly from "cryptly"
 import { Transaction as AccountTransaction } from "../Client/Transaction"
 import { Organization } from "../Organization"
 import { Creatable as AccountCreatable } from "./Creatable"
+import { DateRange as AccountDateRange } from "./DateRange"
 import { Status as AccountStatus } from "./Status"
 
 export interface Account extends AccountCreatable {
@@ -33,4 +34,5 @@ export namespace Account {
 	export namespace Transaction {
 		export const is = AccountTransaction.is
 	}
+	export type DateRange = AccountDateRange
 }
