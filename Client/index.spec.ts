@@ -2,7 +2,10 @@ import * as gracely from "gracely"
 import "isomorphic-fetch"
 import { config } from "dotenv"
 import { Client } from "./index"
+
 config()
+jest.setTimeout(20000)
+
 describe("Client", () => {
 	it("auto login", async () => {
 		const client = Client.create(process.env.server)
@@ -21,8 +24,8 @@ describe("Client", () => {
 					),
 					key: expect.stringMatching(/^[A-Za-z0-9-_=]+\.[A-Za-z0-9-_=]+\.?[A-Za-z0-9-_.+/=]*$/),
 					organization: {
-						code: "mcom",
-						name: "mcom org",
+						code: expect.any(String),
+						name: expect.any(String),
 						status: "active",
 					},
 					status: "active",
