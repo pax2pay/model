@@ -3,6 +3,7 @@ import * as http from "cloud-http"
 import { Account } from "./Account"
 import { Connection } from "./Connection"
 import { Me } from "./Me"
+import { User } from "./User"
 
 export class Client {
 	set onError(value: ((error: gracely.Error, request: http.Request) => Promise<boolean>) | undefined) {
@@ -26,6 +27,7 @@ export class Client {
 	}
 	readonly me = new Me(this.connection)
 	readonly account = new Account(this.connection)
+	readonly user = new User(this.connection)
 	private constructor(private readonly connection: Connection) {
 		this.connection.onUnauthorized = async () => this.onUnauthorized != undefined && (await this.onUnauthorized(this))
 	}
