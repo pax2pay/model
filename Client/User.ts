@@ -5,6 +5,6 @@ import { Connection } from "./Connection"
 export class User {
 	constructor(private readonly connection: Connection) {}
 	async list(): Promise<modelUser[] | gracely.Error> {
-		return await this.connection.get<modelUser[]>("User")
+		return await this.connection.get<modelUser[]>("user")
 	}
 }
