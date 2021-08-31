@@ -4,7 +4,7 @@ import { Status as OperationStatus } from "./Status"
 import { Type as OperationType } from "./Type"
 import { Withdraw as OperationWithdraw } from "./Withdraw"
 
-export type Operation = OperationBase
+export type Operation = OperationDeposit | OperationWithdraw
 
 export namespace Operation {
 	export type Base = OperationBase

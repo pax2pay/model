@@ -13,7 +13,17 @@ import { Status as OperationStatus } from "./Status"
 import { Thaw as OperationThaw } from "./Thaw"
 import { Type as OperationType } from "./Type"
 
-export type Operation = OperationBase
+export type Operation =
+	| OperationAuthorize
+	| OperationCapture
+	| OperationCreate
+	| OperationExpire
+	| OperationFreeze
+	| OperationLimit
+	| OperationRefund
+	| OperationRelease
+	| OperationApproved
+	| OperationSettle
 
 export namespace Operation {
 	export type Authorize = OperationAuthorize
