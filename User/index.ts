@@ -1,5 +1,6 @@
 import * as isoly from "isoly"
 import { Organization } from "../Organization"
+import { Change as UserChange } from "./Change"
 import { Creatable as UserCreatable } from "./Creatable"
 import { Limit as UserLimit } from "./Limit"
 import { Status as UserStatus } from "./Status"
@@ -30,10 +31,16 @@ export namespace User {
 					(value["2fa"].provider == undefined || typeof value["2fa"].provider == "string")))
 		)
 	}
+	export type Change = UserChange
+	export namespace Change {
+		export const is = UserChange.is
+	}
+
 	export type Creatable = UserCreatable
 	export namespace Creatable {
 		export const is = UserCreatable.is
 	}
+
 	export type Limit = UserLimit
 	export namespace Limit {
 		export const is = UserLimit.is
