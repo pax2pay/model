@@ -3,6 +3,8 @@ import { Limit } from "./Limit"
 
 export interface Change extends Partial<Creatable> {
 	user: string
+	name: { first: string; last: string }
+	email: string
 	limits?: Limit[]
 	"2fa"?: {
 		enabled?: boolean
@@ -14,10 +16,9 @@ export namespace Change {
 		return (
 			typeof value == "object" &&
 			typeof value.user == "string" &&
-			(value.name == undefined || typeof value.name == "object") &&
-			(value.name == undefined || typeof value.name.first == "string") &&
-			(value.name == undefined || typeof value.name.last == "string") &&
-			(value.email == undefined || typeof value.email == "string") &&
+			typeof value.name.first == "string" &&
+			typeof value.name.last == "string" &&
+			typeof value.email == "string" &&
 			(value.category == undefined || typeof value.category == "string") &&
 			(value.roles == undefined ||
 				(Array.isArray(value.roles) && value.roles.every((r: any) => typeof r == "string"))) &&
