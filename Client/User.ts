@@ -7,6 +7,9 @@ export class User {
 	async list(): Promise<model.User[] | gracely.Error> {
 		return await this.connection.get<model.User[]>("user")
 	}
+	async create(request: model.User.Creatable): Promise<model.User | gracely.Error> {
+		return await this.connection.post<model.User>("user", request)
+	}
 	async remove(user: string): Promise<model.User | gracely.Error> {
 		return await this.connection.delete<model.User>(`user/${user}`)
 	}
