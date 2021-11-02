@@ -78,7 +78,7 @@
 	"dependencies": {
 		"authly": "^0.2.7",
 		"cloud-http": "^0.0.26",
-		"cryptly": "^0.1.9",
+		"cryptly": "^0.1.11",
 		"gracely": "^0.0.43",
 		"isoly": "^0.1.11"
 	}
