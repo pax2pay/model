@@ -31,12 +31,12 @@ export class Client {
 	private constructor(private readonly connection: ClientConnection) {
 		this.connection.onUnauthorized = async () => this.onUnauthorized != undefined && (await this.onUnauthorized(this))
 	}
-	static create<T = void>(server?: string, key?: string, load?: (connection: ClientConnection) => T): Client {
+	static create<T = void>(server?: string, key?: string, load?: (connection: ClientConnection) => T): Client & T {
 		const connection = ClientConnection.create(server, key)
 		const result = new Client(connection)
 		if (load)
 			Object.assign(result, load(connection))
-		return result
+		return result as Client & T
 	}
 }
 export namespace Client {
