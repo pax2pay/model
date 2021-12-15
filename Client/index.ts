@@ -1,7 +1,7 @@
 import * as gracely from "gracely"
 import * as http from "cloud-http"
 import { Account } from "./Account"
-import { Connection } from "./Connection"
+import { Connection as ClientConnection } from "./Connection"
 import { Me } from "./Me"
 import { User } from "./User"
 
@@ -28,10 +28,18 @@ export class Client {
 	readonly me = new Me(this.connection)
 	readonly account = new Account(this.connection)
 	readonly user = new User(this.connection)
-	private constructor(private readonly connection: Connection) {
+	private constructor(private readonly connection: ClientConnection) {
 		this.connection.onUnauthorized = async () => this.onUnauthorized != undefined && (await this.onUnauthorized(this))
 	}
-	static create(server?: string, key?: string): Client {
-		return new Client(Connection.create(server, key))
+	static create<T = void>(server?: string, key?: string, load?: (connection: ClientConnection) => T): Client {
+		const connection = ClientConnection.create(server, key)
+		const result = new Client(connection)
+		if (load)
+			Object.assign(result, load(connection))
+		return result
 	}
+}
+export namespace Client {
+	export const Connection = ClientConnection
+	export type Connection = ClientConnection
 }
