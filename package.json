@@ -28,7 +28,7 @@
 			"^.+\\.(j|t)sx?$": "ts-jest"
 		},
 		"transformIgnorePatterns": [
-			"<rootDir>/node_modules/(?!(cryptly|authly|isoly|gracely|@pax2pay|cloud-http)/.*)"
+			"<rootDir>/node_modules/(?!(cryptly|authly|isoly|gracely|@pax2pay|cloudly-http|cloudly-rest)/.*)"
 		],
 		"testEnvironment": "node",
 		"testRegex": "((\\.|/)(test|spec))(\\.|\\/.+)(jsx?|tsx?)$",
@@ -58,10 +58,10 @@
 		"@babel/core": "^7.16.5",
 		"@types/isomorphic-fetch": "^0.0.35",
 		"@types/jest": "^27.0.3",
-		"@types/node": "^17.0.1",
+		"@types/node": "^17.0.2",
 		"@types/node-fetch": "^3.0.2",
-		"@typescript-eslint/eslint-plugin": "5.7.0",
-		"@typescript-eslint/parser": "5.7.0",
+		"@typescript-eslint/eslint-plugin": "5.8.0",
+		"@typescript-eslint/parser": "5.8.0",
 		"babel-core": "^6.26.3",
 		"babel-jest": "^27.4.5",
 		"dotenv": "^10.0.0",
@@ -78,6 +78,7 @@
 	"dependencies": {
 		"authly": "^0.2.7",
 		"cloudly-http": "^0.0.40",
+		"cloudly-rest": "^0.0.7",
 		"cryptly": "^0.1.12",
 		"gracely": "^0.0.44",
 		"isoly": "^0.1.19"

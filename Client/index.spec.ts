@@ -1,7 +1,7 @@
 import * as gracely from "gracely"
 import "isomorphic-fetch"
 import { config } from "dotenv"
-import { Client } from "./index"
+import { Client } from "../index"
 
 config()
 jest.setTimeout(20000)
