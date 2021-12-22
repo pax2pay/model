@@ -1,5 +1,5 @@
 import * as gracely from "gracely"
-import * as http from "cloud-http"
+import * as http from "cloudly-http"
 import { Account } from "./Account"
 import { Connection as ClientConnection } from "./Connection"
 import { Me } from "./Me"
