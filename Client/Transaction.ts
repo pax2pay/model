@@ -1,7 +1,7 @@
 import * as gracely from "gracely"
 import * as isoly from "isoly"
+import * as rest from "cloudly-rest"
 import { Account } from "../Account"
-import { Connection } from "./Connection"
 
 export interface Transaction {
 	// reference: { provider: Provider; id: string; account: string }
@@ -10,10 +10,9 @@ export interface Transaction {
 	// description: string
 	balance: number
 }
-export class Transaction {
-	constructor(private readonly connection: Connection) {}
+export class Transaction extends rest.Collection<gracely.Error> {
 	async list(account: Account | string, start: isoly.Date, end: isoly.Date): Promise<Transaction[] | gracely.Error> {
-		return await this.connection.get<Transaction[]>(
+		return await this.client.get<Transaction[]>(
 			`account/${typeof account == "string" ? account : account.id}/transaction?start=${start}&end=${end}`
 		)
 	}

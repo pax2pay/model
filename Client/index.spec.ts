@@ -1,13 +1,13 @@
 import * as gracely from "gracely"
 import "isomorphic-fetch"
 import { config } from "dotenv"
-import { Client } from "./index"
+import { Client } from "../index"
 
 config()
 jest.setTimeout(20000)
 
 describe("Client", () => {
-	it("auto login", async () => {
+	it.skip("auto login", async () => {
 		const client = Client.create(process.env.server)
 		expect(client).not.toBeUndefined()
 		if (client) {
@@ -43,7 +43,7 @@ describe("Client", () => {
 			expect(transactions).toMatchObject([])
 		}
 	})
-	it("no server", async () => {
+	it.skip("no server", async () => {
 		const client = Client.create()
 		expect(client).not.toBeUndefined()
 		if (client) {
