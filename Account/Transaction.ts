@@ -1,26 +1,29 @@
 import * as isoly from "isoly"
-// import { Provider } from "../Provider"
+import { TransactionType } from "./TransactionType"
 
 export interface Transaction {
-	// reference: { provider: Provider; id: string; account: string }
-	time: isoly.DateTime
+	type: TransactionType
+	postingDate: isoly.DateTime
+	transactionDate: isoly.DateTime
+	currency: isoly.Currency
 	amount: number
-	// description: string
-	balance: number
+	availableBalance: number
+	actualBalance: number
+	description?: string
 }
 
 export namespace Transaction {
 	export function is(value: any | Transaction): value is Transaction {
 		return (
 			typeof value == "object" &&
-			// typeof value.reference == "object" &&
-			// Provider.is(value.reference.provider) &&
-			// typeof value.reference.id == "string" &&
-			// typeof value.reference.account == "string" &&
-			isoly.DateTime.is(value.date) &&
+			TransactionType.is(value.type) &&
+			isoly.DateTime.is(value.postingDate) &&
+			isoly.DateTime.is(value.transactionDate) &&
+			isoly.Currency.is(value.currency) &&
 			typeof value.amount == "number" &&
-			// typeof value.description == "string" &&
-			typeof value.balance == "number"
+			typeof value.availableBalance == "number" &&
+			typeof value.actualBalance == "number" &&
+			(value.description == undefined || typeof value.description == "string")
 		)
 	}
 }
