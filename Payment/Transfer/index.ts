@@ -1,20 +1,5 @@
-import { Base } from "../Base"
-import { Type } from "../Type"
-import { Operation as TransferOperation } from "./Operation"
-
-export interface Transfer extends Base {
-	type: Type
-	operations: TransferOperation[]
-	amount: number
-}
+import { Creatable as TransferCreatable } from "./Creatable"
 
 export namespace Transfer {
-	export type Operation = TransferOperation
-	export namespace Operation {
-		export type Base = TransferOperation.Base
-		export type Deposit = TransferOperation.Deposit
-		export type Withdraw = TransferOperation.Withdraw
-		export type Type = TransferOperation.Type
-		export type Status = TransferOperation.Status
-	}
+	export type Creatable = TransferCreatable
 }
